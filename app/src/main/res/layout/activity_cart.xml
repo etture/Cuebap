@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckOutPage.CartActivity"
+    android:id="@+id/cart_page_layout"
+    >
+
+    <View
+        android:id="@+id/status_bar_height"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/status_bar_height"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/cart_page_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_below="@+id/status_bar_height"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:titleTextColor="@color/colorWhite"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/cart_page_toolbar"
+        >
+
+        <RelativeLayout
+        android:id="@+id/cart_page_no_items"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/cart_page_pay_btn_layout"
+        android:visibility="gone"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            >
+
+            <ImageView
+                android:id="@+id/cart_page_no_items_logo"
+                android:layout_width="@dimen/nothing_in_cart_image_width"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true"
+                android:src="@drawable/cuebap_logo_twolines_yellow"
+                />
+
+            <TextView
+                android:id="@+id/cart_page_nothing_in_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/cart_page_no_items_logo"
+                android:layout_marginTop="@dimen/small_side_margin"
+                android:text="@string/nothing_in_cart"
+                android:textSize="@dimen/nothing_in_cart_text_size"
+                android:textColor="@color/colorDarkGray"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/cart_page_yes_items"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            >
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/cart_page_pay_btn_layout"
+                android:paddingHorizontal="@dimen/standard_side_margin"
+                android:fillViewport="true"
+                android:scrollbarStyle="outsideOverlay"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="15dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/cart_page_order_list_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="@string/order_list"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/cart_page_current_restaurant"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/cart_page_order_list_text"
+                            android:layout_marginLeft="@dimen/standard_side_margin"
+                            android:text="(current restaurant)"
+                            android:textColor="@color/colorDarkGray"
+                            android:textSize="18sp"
+                            />
+
+                        <TextView
+                            android:id="@+id/cart_page_empty_btn"
+                            android:layout_width="@dimen/simple_button_width"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginRight="@dimen/standard_side_margin"
+                            android:gravity="center"
+                            android:text="@string/empty"
+                            android:background="@drawable/cart_page_empty_button"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:textSize="@dimen/cart_item_button_text_size"
+                            android:minHeight="0dp"
+                            android:minWidth="0dp"
+                            android:padding="@dimen/small_side_margin"
+                            />
+
+                    </RelativeLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/cart_page_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none"
+                        android:nestedScrollingEnabled="false"
+                        >
+                    </android.support.v7.widget.RecyclerView>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/sum_height"
+                        android:background="@drawable/field_background_dark_gray"
+                        android:paddingHorizontal="@dimen/standard_side_margin"
+                        android:layout_marginVertical="@dimen/standard_side_margin"
+                        android:visibility="visible"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:id="@+id/cart_page_sum_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/total_price_text_size"
+                            android:text="@string/sum"
+                            />
+
+                        <TextView
+                            android:id="@+id/cart_page_sum_display"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:text="60000 won"
+                            android:textSize="@dimen/total_price_price_text_size"
+                            android:textColor="@color/colorWhite"
+                            />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:background="@color/colorFaintGray"
+                        />
+
+                    <TextView
+                        android:id="@+id/cart_page_pick_up_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="15dp"
+                        android:text="@string/pick_up"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/field_background"
+                        android:orientation="vertical"
+                        android:paddingVertical="@dimen/standard_side_margin"
+                        >
+
+                        <TextView
+                            android:id="@+id/cart_page_order_method_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/standard_side_margin"
+                            android:text="@string/order_method"
+                            android:textSize="@dimen/field_text_size"
+                            android:textColor="@color/colorPrimary"
+                            />
+
+                        <RadioGroup
+                            android:id="@+id/cart_page_pick_up_radio_group"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cart_page_order_method_text"
+                            android:layout_marginLeft="@dimen/small_side_margin"
+                            android:checkedButton="@id/cart_page_order_immediately_radio"
+                            >
+
+                            <RadioButton
+                                android:id="@+id/cart_page_order_immediately_radio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:scaleX="0.75"
+                                android:scaleY="0.75"
+                                android:text="@string/order_immediately"
+                                android:textSize="@dimen/field_text_size"
+                                />
+
+                            <RadioButton
+                                android:id="@+id/cart_page_order_later_radio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:scaleX="0.75"
+                                android:scaleY="0.75"
+                                android:text="@string/order_later"
+                                android:textSize="@dimen/field_text_size"
+                                />
+
+                        </RadioGroup>
+
+                        <TextView
+                            android:id="@+id/order_later_schedule_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/cart_page_order_method_text"
+                            android:layout_marginLeft="@dimen/standard_side_margin"
+                            android:text="@string/order_later_time"
+                            android:textSize="@dimen/field_text_size"
+                            android:textColor="@color/colorDarkGray"
+                            android:visibility="gone"
+                            />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:background="@color/colorFaintGray"
+                        />
+
+                    <TextView
+                        android:id="@+id/cart_page_payment_option_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="15dp"
+                        android:text="@string/payment_option"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/field_background"
+                        android:orientation="vertical"
+                        >
+
+                        <RadioGroup
+                            android:id="@+id/cart_page_payment_option_radio_group"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/small_side_margin"
+                            android:checkedButton="@id/cart_page_simple_payment_radio"
+                            >
+
+                            <RadioButton
+                                android:id="@+id/cart_page_simple_payment_radio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:scaleX="0.75"
+                                android:scaleY="0.75"
+                                android:text="@string/simple_payment"
+                                android:textSize="@dimen/field_text_size"
+                                />
+
+                            <RadioButton
+                                android:id="@+id/cart_page_credit_card_radio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:scaleX="0.75"
+                                android:scaleY="0.75"
+                                android:text="@string/credit_card"
+                                android:textSize="@dimen/field_text_size"
+                                />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:background="@color/colorFaintGray"
+                        />
+
+                    <TextView
+                        android:id="@+id/cart_page_total_price_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="15dp"
+                        android:text="@string/total_price"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/field_background"
+                        android:padding="@dimen/standard_side_margin"
+                        android:orientation="vertical"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/standard_side_margin"
+                            >
+
+                            <TextView
+                                android:id="@+id/cart_page_total_points_point_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:text="@string/point"
+                                android:textSize="@dimen/field_text_size"
+                                android:textColor="@color/colorPrimary"
+                                />
+
+                            <TextView
+                                android:id="@+id/cart_page_total_points_point_display"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:text="@string/points_display"
+                                android:textSize="@dimen/field_text_size"
+                                android:textColor="@color/colorDarkGray"
+                                />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/standard_side_margin"
+                            >
+
+                            <TextView
+                                android:id="@+id/cart_page_total_points_coupon_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:text="@string/coupon"
+                                android:textSize="@dimen/field_text_size"
+                                android:textColor="@color/colorPrimary"
+                                />
+
+                            <TextView
+                                android:id="@+id/cart_page_total_points_coupon_display"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:text="@string/coupons_display"
+                                android:textSize="@dimen/field_text_size"
+                                android:textColor="@color/colorDarkGray"
+                                />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginBottom="@dimen/standard_side_margin"
+                            android:background="@color/colorPrimary"
+                            />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <TextView
+                                android:id="@+id/cart_page_total_points_discount_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:text="@string/discount"
+                                android:textSize="@dimen/field_text_size"
+                                android:textColor="@color/colorPrimary"
+                                />
+
+                            <TextView
+                                android:id="@+id/cart_page_total_points_discount_display"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:text="@string/menu_price"
+                                android:textSize="@dimen/field_text_size"
+                                android:textColor="@color/colorDarkGray"
+                                />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/total_price_height"
+                        android:background="@drawable/field_background_yellow"
+                        android:paddingHorizontal="@dimen/standard_side_margin"
+                        android:layout_marginVertical="@dimen/standard_side_margin"
+                        android:visibility="visible"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:id="@+id/cart_page_total_price_bottom_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/total_price_text_size"
+                            android:text="@string/total_price"
+                            />
+
+                        <TextView
+                            android:id="@+id/cart_page_total_price_display"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:text="60000 won"
+                            android:textSize="@dimen/total_price_price_text_size"
+                            android:textColor="@color/colorWhite"
+                            />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+            <LinearLayout
+                android:id="@+id/cart_page_pay_btn_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                >
+
+                <TextView
+                    android:id="@+id/cart_page_add_menus_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/bottom_button_height"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:background="@color/colorDarkerGray"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:text="@string/add_menus"
+                    android:textSize="@dimen/bottom_button_text_size"
+                    android:textColor="@color/colorWhite"
+                    />
+
+                <TextView
+                    android:id="@+id/cart_page_pay_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/bottom_button_height"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:background="@color/colorPrimary"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:text="@string/pay"
+                    android:textSize="@dimen/bottom_button_text_size"
+                    android:textColor="@color/colorWhite"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</RelativeLayout>

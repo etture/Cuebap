@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:id="@+id/cart_page_no_items"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingBottom="130dp"
+            >
+
+            <ImageView
+                android:id="@+id/cart_page_no_items_logo"
+                android:layout_width="@dimen/nothing_in_cart_image_width"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true"
+                android:src="@drawable/cuebap_logo_twolines_yellow"
+                />
+
+            <TextView
+                android:id="@+id/sample_fragment_service_in_preparation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/cart_page_no_items_logo"
+                android:layout_marginTop="@dimen/small_side_margin"
+                android:text="@string/service_in_preparation"
+                android:textSize="@dimen/nothing_in_cart_text_size"
+                android:textColor="@color/colorDarkGray"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

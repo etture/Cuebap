@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/tab_restaurant_page_menu"
+        android:orderInCategory="100"
+        android:title="@string/menu"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/tab_restaurant_page_review"
+        android:orderInCategory="100"
+        android:title="@string/review"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/tab_restaurant_page_information"
+        android:orderInCategory="100"
+        android:title="@string/information"
+        app:showAsAction="never"
+        />
+</menu>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/AppTheme.NoActionBar"
+    android:background="@color/colorFainterGray"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/restaurant_page_cart_btn_layout"
+        >
+
+        <com.jinoolee.cuebap.Helper.AnimatedExpandableListView
+            android:id="@+id/restaurant_page_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:padding="@dimen/standard_side_margin"
+            android:foregroundGravity="center_horizontal"
+            android:dividerHeight="@dimen/food_item_margin"
+            android:divider="@color/colorFainterGray"
+            android:childDivider="@color/colorTransparent"
+            android:groupIndicator="@null"
+            android:scrollbars="none"
+            android:nestedScrollingEnabled="true"
+            >
+        </com.jinoolee.cuebap.Helper.AnimatedExpandableListView>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/restaurant_page_cart_btn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/restaurant_page_cart_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_button_height"
+            android:gravity="center"
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/cart"
+            android:textSize="@dimen/bottom_button_text_size"
+            android:textColor="@color/colorWhite"
+            />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

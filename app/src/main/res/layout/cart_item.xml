@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/cart_item_height"
+    android:padding="@dimen/standard_side_margin"
+    android:background="@drawable/field_background"
+    >
+
+    <ImageView
+        android:id="@+id/cart_item_image"
+        android:layout_width="@dimen/cart_item_image_width"
+        android:layout_height="@dimen/cart_item_image_width"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/cafe_latte"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        />
+
+    <TextView
+        android:id="@+id/cart_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/cart_item_image"
+        android:layout_toLeftOf="@+id/cart_item_delete_btn"
+        android:layout_marginLeft="@dimen/small_side_margin"
+        android:layout_marginRight="@dimen/small_side_margin"
+        android:text="Cafe Latte"
+        android:textSize="@dimen/cart_item_name_text_size"
+        />
+
+    <TextView
+        android:id="@+id/cart_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/cart_item_image"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/small_side_margin"
+        android:text="6000 won"
+        android:textSize="@dimen/cart_item_price_text_size"
+        />
+
+    <TextView
+        android:id="@+id/cart_item_delete_btn"
+        android:layout_width="@dimen/simple_button_width"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:gravity="center"
+        android:background="@drawable/cart_item_delete_button"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="@string/remove"
+        android:textSize="@dimen/cart_item_button_text_size"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:padding="@dimen/small_side_margin"
+        />
+
+</RelativeLayout>

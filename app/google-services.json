@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "615334450749",
+    "firebase_url": "https://cuebap-f377f.firebaseio.com",
+    "project_id": "cuebap-f377f",
+    "storage_bucket": "cuebap-f377f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615334450749:android:a7155fe42658ad0e",
+        "android_client_info": {
+          "package_name": "com.jinoolee.cuebap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "615334450749-70hq1b67t37ube3jphj4svp7k7c8fbid.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jinoolee.cuebap",
+            "certificate_hash": "c9fcf21c1cf7a0ca8f9b0ba94767f9dff7b34231"
+          }
+        },
+        {
+          "client_id": "615334450749-odoimlm7gj9dcbd145n5mflv8jfi1643.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7p63DDiXUFGzTUO0EToEVWXAloe0edmY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "615334450749-odoimlm7gj9dcbd145n5mflv8jfi1643.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
