@@ -7,6 +7,144 @@
     tools:context=".CheckOutPage.CheckOutActivity"
     >
 
+    <View
+        android:id="@+id/check_out_status_bar_height"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/status_bar_height"
+        android:layout_alignParentTop="true"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/check_out_status_bar_height"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:id="@+id/check_out_mobile_receipt_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_centerHorizontal="true"
+                android:text="@string/mobile_receipt"
+                android:textColor="@color/colorPrimary"
+                android:textSize="35sp"
+                />
+
+            <TextView
+                android:id="@+id/check_out_order_completed_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/check_out_mobile_receipt_text"
+                android:layout_marginTop="30dp"
+                android:layout_centerHorizontal="true"
+                android:text="@string/your_order_has_been_completed"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:id="@+id/check_out_waiting_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/check_out_order_completed_text"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:text="237"
+                android:textColor="@color/colorPrimary"
+                android:textSize="70sp"
+                />
+
+            <TextView
+                android:id="@+id/check_out_pick_up_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/check_out_waiting_number"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:text="@string/pick_up"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:id="@+id/check_out_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/check_out_pick_up_text"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:text="@string/basic_time"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:id="@+id/check_out_order_status_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/check_out_time_text"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:text="@string/order_status"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/check_out_order_status_text"
+                android:weightSum="12"
+                >
+
+                <TextView
+                    android:id="@+id/check_out_reservation_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:gravity="center_horizontal"
+                    android:text="@string/reservation"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorSelectedGreen"
+                    />
+
+                <TextView
+                    android:id="@+id/check_out_preparing_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:gravity="center_horizontal"
+                    android:text="@string/preparing"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorDarkGray"
+                    />
+
+                <TextView
+                    android:id="@+id/check_out_ready_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:gravity="center_horizontal"
+                    android:text="@string/ready"
+                    android:textSize="17sp"
+                    android:textColor="@color/colorDarkGray"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
     <LinearLayout
         android:id="@+id/checkout_page_home_btn_layout"
         android:layout_width="match_parent"

@@ -31,6 +31,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jinoolee.cuebap.CheckOutPage.CartActivity;
+import com.jinoolee.cuebap.CheckOutPage.CheckOutActivity;
 import com.jinoolee.cuebap.Helper.AnimatedExpandableListView;
 import com.jinoolee.cuebap.BaseActivity;
 import com.jinoolee.cuebap.Data.BuildingsAndRestaurants;
@@ -390,6 +391,9 @@ public class MainPageActivity extends BaseActivity
             startActivityForResult(intent, RC.MY_PAGE);
 
         } else if (id == R.id.nav_mobile_receipt) {
+
+            intent = new Intent(this, CheckOutActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_cart) {
 

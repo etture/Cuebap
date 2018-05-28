@@ -14,4 +14,5 @@
     <color name="colorFb">#3B5998</color>
     <color name="colorSideBar">#e0292929</color>
     <color name="colorDarkerGray">#5a5a5a</color>
+    <color name="colorSelectedGreen">#00b300</color>
 </resources>

@@ -3,6 +3,9 @@ package com.jinoolee.cuebap.Data;
 import android.os.Bundle;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
 
 public class CurrentOrder {
 
@@ -14,6 +17,7 @@ public class CurrentOrder {
 
     private boolean orderLater;
     private int orderHour, orderMinute, orderAmPm;
+    private int waitingNumber;
 
     private ArrayList<Integer> itemNames;
     private ArrayList<Integer> itemPrices;
@@ -43,6 +47,48 @@ public class CurrentOrder {
         itemNames = bundle.getIntegerArrayList("itemNames");
         itemPrices = bundle.getIntegerArrayList("itemPrices");
 
+        Random random = new Random();
+        waitingNumber = random.nextInt(999) + 1;
+
     }
 
+    public int getTotalPrice(){
+        return totalPrice;
+    }
+
+    public int getTotalDiscount(){
+        return totalDiscount;
+    }
+
+    public int getTotalDiscountedPrice(){
+        return totalDiscountedPrice;
+    }
+
+    public boolean getOrderLater(){
+        return orderLater;
+    }
+
+    public int getOrderHour(){
+        return orderHour;
+    }
+
+    public int getOrderMinute(){
+        return orderMinute;
+    }
+
+    public int getOrderAmPm(){
+        return orderAmPm;
+    }
+
+    public ArrayList<Integer> getItemNames(){
+        return itemNames;
+    }
+
+    public ArrayList<Integer> getItemPrices() {
+        return itemPrices;
+    }
+
+    public int getWaitingNumber(){
+        return waitingNumber;
+    }
 }
