@@ -221,6 +221,14 @@ public class CartActivity extends BaseActivity {
                 currentOrder.setCurrentOrder(bundle);
 
                 cart.empty();
+
+                try{
+                    showProgressDialog();
+                    Thread.sleep(200);
+                }catch(InterruptedException e){}
+
+                hideProgressDialog();
+
                 startActivity(intent);
 
             }

@@ -19,6 +19,7 @@ import com.jinoolee.cuebap.Data.CartSingleton;
 import com.jinoolee.cuebap.R;
 import com.jinoolee.cuebap.RecyclerViewItems.CartItem;
 import com.jinoolee.cuebap.RecyclerViewItems.FoodItem;
+import com.jinoolee.cuebap.RecyclerViewItems.OrderItem;
 import com.jinoolee.cuebap.RecyclerViewItems.RecyclerViewItem;
 
 import java.util.List;
@@ -60,6 +61,11 @@ public abstract class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
 
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_item, parent, false);
             return new CartItemHolder(view);
+
+        }else if(viewType == RecyclerViewItem.ITEM_ORDER){
+
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_item, parent, false);
+            return new OrderItemHolder(view);
 
         }
 
@@ -107,6 +113,14 @@ public abstract class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
                         showRemoveItemDialog(cartItem, position); //includes notifyDataSetChanged()
                     }
                 });
+
+            }else if(obj.getType() == RecyclerViewItem.ITEM_ORDER){
+
+                final OrderItem orderItem = (OrderItem) obj;
+                OrderItemHolder orderItemHolder = (OrderItemHolder) holder;
+
+                orderItemHolder.name.setText(Utils.getLangString(mContext, curLang, orderItem.getName()));
+                orderItemHolder.price.setText(Utils.getLangString(mContext, curLang, R.string.menu_price, orderItem.getPrice()));
 
             }
         }
@@ -159,6 +173,18 @@ public abstract class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
             price = itemView.findViewById(R.id.cart_item_price);
             deleteBtn = itemView.findViewById(R.id.cart_item_delete_btn);
             image = itemView.findViewById(R.id.cart_item_image);
+        }
+    }
+
+    public static class OrderItemHolder extends RecyclerView.ViewHolder{
+
+        private TextView name;
+        private TextView price;
+
+        public OrderItemHolder(View itemView) {
+            super(itemView);
+            name = itemView.findViewById(R.id.order_item_name);
+            price = itemView.findViewById(R.id.order_item_price);
         }
     }
 

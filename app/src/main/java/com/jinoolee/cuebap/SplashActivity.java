@@ -34,7 +34,7 @@ public class SplashActivity extends BaseActivity {
         intent = new Intent(this, SignInActivity.class);
 
         try{
-            Thread.sleep(400);
+            Thread.sleep(200);
         }catch(InterruptedException e){
             Log.e(TAG, "SplashActivity: fail", e);
         }

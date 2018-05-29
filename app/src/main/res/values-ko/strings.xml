@@ -142,4 +142,9 @@
     <string name="reservation">예약</string>
     <string name="preparing">준비중</string>
     <string name="ready">준비완료</string>
+    <string name="view_detailed_receipt">영수증 상세 보기</string>
+    <string name="no_order_placed">준비 중인 주문이 없습니다!</string>
+    <string name="price">가격</string>
+    <string name="subtotal">소계</string>
+    <string name="fold_detailed_receipt">영수증 접기</string>
 </resources>

@@ -148,4 +148,9 @@
     <string name="reservation">Reservation</string>
     <string name="preparing">Preparing</string>
     <string name="ready">Ready</string>
+    <string name="view_detailed_receipt">View Detailed Receipt</string>
+    <string name="no_order_placed">There are no orders placed!</string>
+    <string name="price">Price</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="fold_detailed_receipt">Fold Detailed Receipt</string>
 </resources>

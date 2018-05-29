@@ -65,10 +65,8 @@ public class MyPageActivity extends BaseActivity implements View.OnClickListener
         //ActionBar configuration DONE
 
         signOutBtn = findViewById(R.id.sign_out_btn);
-        foldingCell = findViewById(R.id.foldingCell);
 
         signOutBtn.setOnClickListener(this);
-        foldingCell.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
 

@@ -2,9 +2,13 @@ package com.jinoolee.cuebap.Data;
 
 import android.os.Bundle;
 
+import com.jinoolee.cuebap.RecyclerViewItems.OrderItem;
+import com.jinoolee.cuebap.RecyclerViewItems.RecyclerViewItem;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 public class CurrentOrder {
@@ -19,10 +23,15 @@ public class CurrentOrder {
     private int orderHour, orderMinute, orderAmPm;
     private int waitingNumber;
 
+    private boolean orderPlaced;
+
     private ArrayList<Integer> itemNames;
     private ArrayList<Integer> itemPrices;
+    private List<RecyclerViewItem> orderItems = new ArrayList<>();
 
-    private CurrentOrder(){}
+    private CurrentOrder(){
+        orderPlaced = false;
+    }
 
     public static CurrentOrder getInstance(){
         return currentOrder;
@@ -44,11 +53,22 @@ public class CurrentOrder {
 
         }
 
+        Random random = new Random();
+        waitingNumber = random.nextInt(999) + 1;
+
+        orderPlaced = true;
+
         itemNames = bundle.getIntegerArrayList("itemNames");
         itemPrices = bundle.getIntegerArrayList("itemPrices");
 
-        Random random = new Random();
-        waitingNumber = random.nextInt(999) + 1;
+        orderItems.clear();
+
+        for(int i = 0; i < itemNames.size(); i++){
+            int name = itemNames.get(i);
+            int price = itemPrices.get(i);
+            OrderItem item = new OrderItem(name, price);
+            orderItems.add(item);
+        }
 
     }
 
@@ -90,5 +110,13 @@ public class CurrentOrder {
 
     public int getWaitingNumber(){
         return waitingNumber;
+    }
+
+    public boolean isOrderPlaced(){
+        return orderPlaced;
+    }
+
+    public List<RecyclerViewItem> getOrderItems(){
+        return orderItems;
     }
 }
