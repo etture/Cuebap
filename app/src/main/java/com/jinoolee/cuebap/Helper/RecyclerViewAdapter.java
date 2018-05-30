@@ -204,10 +204,16 @@ public abstract class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                Log.d(TAG, "Yes button clicked");
+                if(MyDebug.LOG){
+                    Log.d(TAG, "Yes button clicked");
+                }
 
                 cart.removeItem(position);
-                Log.d(TAG, "Menu items in cart: " + cart.toString());
+
+                if(MyDebug.LOG){
+                    Log.d(TAG, "Menu items in cart: " + cart.toString());
+                }
+
                 notifyDataSetChanged();
 
                 onItemDeleted(); //Update total price display, method defined in activity
@@ -217,7 +223,9 @@ public abstract class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
         builder.setNegativeButton(Utils.getLangString(mContext, curLang, R.string.no), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Log.d(TAG, "No button clicked");
+                if(MyDebug.LOG){
+                    Log.d(TAG, "No button clicked");
+                }
             }
         });
 

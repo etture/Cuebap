@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jinoolee.cuebap.BaseActivity;
+import com.jinoolee.cuebap.Helper.MyDebug;
 import com.jinoolee.cuebap.Helper.Utils;
 import com.jinoolee.cuebap.R;
 import com.ramotion.foldingcell.FoldingCell;
@@ -73,7 +74,9 @@ public class MyPageActivity extends BaseActivity implements View.OnClickListener
         //Change language string in all layout elements
         layoutElementStringSetup();
 
-        Log.e(TAG, "onCreate() called");
+        if(MyDebug.LOG){
+            Log.e(TAG, "onCreate() called");
+        }
     }
 
     @Override
@@ -84,7 +87,9 @@ public class MyPageActivity extends BaseActivity implements View.OnClickListener
 
         if(id == signOutBtn.getId()){
 
-            Log.e(TAG, "signOutBtn clicked");
+            if(MyDebug.LOG){
+                Log.e(TAG, "signOutBtn clicked");
+            }
 
             mAuth.signOut();
 

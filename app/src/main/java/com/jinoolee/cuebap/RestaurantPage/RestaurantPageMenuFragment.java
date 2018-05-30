@@ -21,6 +21,7 @@ import com.jinoolee.cuebap.CheckOutPage.CartActivity;
 import com.jinoolee.cuebap.Data.BuildingsAndRestaurants;
 import com.jinoolee.cuebap.Data.CartSingleton;
 import com.jinoolee.cuebap.Helper.AnimatedExpandableListView;
+import com.jinoolee.cuebap.Helper.MyDebug;
 import com.jinoolee.cuebap.Helper.Utils;
 import com.jinoolee.cuebap.R;
 import com.jinoolee.cuebap.RecyclerViewItems.BuildingItem;
@@ -105,7 +106,9 @@ public class RestaurantPageMenuFragment extends Fragment {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
 
-                Log.d(TAG, "Two-item child view clicked: TRUE");
+                if(MyDebug.LOG){
+                    Log.d(TAG, "Two-item child view clicked: TRUE");
+                }
 
                 return true;
             }
@@ -215,7 +218,10 @@ public class RestaurantPageMenuFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     leftOrRight = LEFT;
-                    Log.d(TAG, "Menu item selected: LEFT");
+
+                    if(MyDebug.LOG){
+                        Log.d(TAG, "Menu item selected: LEFT");
+                    }
 
                     FoodItem food = (FoodItem) getChild(groupIndex, childIndex*2);
 
@@ -227,7 +233,10 @@ public class RestaurantPageMenuFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     leftOrRight = RIGHT;
-                    Log.d(TAG, "Menu item selected: RIGHT");
+
+                    if(MyDebug.LOG){
+                        Log.d(TAG, "Menu item selected: RIGHT");
+                    }
 
                     FoodItem food = (FoodItem) getChild(groupIndex, (childIndex*2)+1);
 
@@ -269,8 +278,10 @@ public class RestaurantPageMenuFragment extends Fragment {
 
             }
 
-            Log.d(TAG, "Children count: " + Integer.toString(getRealChildrenCount(groupPosition)));
-            Log.d(TAG, "Child index: " + Integer.toString(childPosition));
+            if(MyDebug.LOG){
+                Log.d(TAG, "Children count: " + Integer.toString(getRealChildrenCount(groupPosition)));
+                Log.d(TAG, "Child index: " + Integer.toString(childPosition));
+            }
 
             convertView.setClickable(false);
             return convertView;
@@ -364,7 +375,9 @@ public class RestaurantPageMenuFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                Log.d(TAG, "Yes button clicked");
+                if(MyDebug.LOG){
+                    Log.d(TAG, "Yes button clicked");
+                }
 
                 if(!cart.isEmpty()){
 
@@ -379,7 +392,10 @@ public class RestaurantPageMenuFragment extends Fragment {
 
                 cart.setCurrentRestaurant(currentRestaurant);
                 cart.addItem(food);
-                Log.d(TAG, "Menu items in cart: " + cart.toString());
+
+                if(MyDebug.LOG){
+                    Log.d(TAG, "Menu items in cart: " + cart.toString());
+                }
 
                 cartBtn.setText(Utils.getLangString(getContext(), curLang, R.string.cart) + " " + cart.getItemCount());
 
@@ -389,7 +405,9 @@ public class RestaurantPageMenuFragment extends Fragment {
         builder.setNegativeButton(Utils.getLangString(getContext(), curLang, R.string.no), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Log.d(TAG, "No button clicked");
+                if(MyDebug.LOG){
+                    Log.d(TAG, "No button clicked");
+                }
             }
         });
 
@@ -414,7 +432,9 @@ public class RestaurantPageMenuFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                Log.d(TAG, "Yes button clicked");
+                if(MyDebug.LOG){
+                    Log.d(TAG, "Yes button clicked");
+                }
 
                 //First empty the original menus
                 cart.empty();
@@ -423,7 +443,10 @@ public class RestaurantPageMenuFragment extends Fragment {
                 cart.setCurrentRestaurant(currentRestaurant);
 
                 cart.addItem(food);
-                Log.d(TAG, "Menu items in cart: " + cart.toString());
+
+                if(MyDebug.LOG){
+                    Log.d(TAG, "Menu items in cart: " + cart.toString());
+                }
 
                 cartBtn.setText(Utils.getLangString(getContext(), curLang, R.string.cart) + " " + cart.getItemCount());
 
@@ -433,7 +456,9 @@ public class RestaurantPageMenuFragment extends Fragment {
         builder.setNegativeButton(Utils.getLangString(getContext(), curLang, R.string.no), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Log.d(TAG, "No button clicked");
+                if(MyDebug.LOG){
+                    Log.d(TAG, "No button clicked");
+                }
             }
         });
 

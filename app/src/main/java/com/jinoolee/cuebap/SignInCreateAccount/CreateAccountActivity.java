@@ -30,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.jinoolee.cuebap.BaseActivity;
 import com.jinoolee.cuebap.Data.RC;
 import com.jinoolee.cuebap.Data.User;
+import com.jinoolee.cuebap.Helper.MyDebug;
 import com.jinoolee.cuebap.Helper.Utils;
 import com.jinoolee.cuebap.MainPage.MainPageActivity;
 import com.jinoolee.cuebap.R;
@@ -218,7 +219,9 @@ public class CreateAccountActivity extends BaseActivity implements View.OnClickL
     }
 
     private void createAccount(String email, String password){
-        Log.d(TAG, "createAccount: " + email);
+        if(MyDebug.LOG){
+            Log.d(TAG, "createAccount: " + email);
+        }
 
         if(!validateForm()){
             return;
@@ -232,7 +235,10 @@ public class CreateAccountActivity extends BaseActivity implements View.OnClickL
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
 
-                            Log.d(TAG, "createUserWithEmail : success");
+                            if(MyDebug.LOG){
+                                Log.d(TAG, "createUserWithEmail : success");
+                            }
+
                             FirebaseUser user = mAuth.getCurrentUser();
                             String userId = user.getUid();
 
@@ -280,7 +286,9 @@ public class CreateAccountActivity extends BaseActivity implements View.OnClickL
 
                         }else{
 
-                            Log.w(TAG, "createUserWithEmail : failure", task.getException());
+                            if (MyDebug.LOG) {
+                                Log.w(TAG, "createUserWithEmail : failure", task.getException());
+                            }
 
                             if(task.getException() instanceof FirebaseAuthUserCollisionException){
                                 showSnackbar(R.id.create_rootView, Utils.getLangString(getApplicationContext(), curLang, R.string.account_already_exists));

@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.jinoolee.cuebap.BaseActivity;
 import com.jinoolee.cuebap.Data.RC;
 import com.jinoolee.cuebap.Data.User;
+import com.jinoolee.cuebap.Helper.MyDebug;
 import com.jinoolee.cuebap.Helper.Utils;
 import com.jinoolee.cuebap.MainPage.MainPageActivity;
 import com.jinoolee.cuebap.R;
@@ -184,7 +185,9 @@ public class CreateAccountOtherActivity extends BaseActivity implements View.OnC
     }
 
     private void createAccount(FirebaseUser user){
-        Log.d(TAG, "createAccount: " + user.getEmail());
+        if(MyDebug.LOG){
+            Log.d(TAG, "createAccount: " + user.getEmail());
+        }
 
         if(!validateForm()){
             return;

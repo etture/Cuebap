@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.jinoolee.cuebap.BaseActivity;
+import com.jinoolee.cuebap.Helper.MyDebug;
 import com.jinoolee.cuebap.Helper.Utils;
 import com.jinoolee.cuebap.R;
 
@@ -103,7 +104,9 @@ public class CampusSearchActivity extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                Log.d(TAG, "Yes button clicked");
+                if(MyDebug.LOG){
+                    Log.d(TAG, "Yes button clicked");
+                }
 
                 Intent intent = new Intent();
                 intent.putExtra("school", schoolStr);
@@ -116,14 +119,18 @@ public class CampusSearchActivity extends BaseActivity {
         builder.setNegativeButton(Utils.getLangString(this, curLang, R.string.no), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Log.d(TAG, "No button clicked");
+                if(MyDebug.LOG){
+                    Log.d(TAG, "No button clicked");
+                }
             }
         });
 
         builder.setNeutralButton(Utils.getLangString(this, curLang, R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Log.d(TAG, "Cancel button clicked");
+                if(MyDebug.LOG){
+                    Log.d(TAG, "Cancel button clicked");
+                }
             }
         });
 

@@ -35,6 +35,7 @@ import com.jinoolee.cuebap.CheckOutPage.CheckOutActivity;
 import com.jinoolee.cuebap.Helper.AnimatedExpandableListView;
 import com.jinoolee.cuebap.BaseActivity;
 import com.jinoolee.cuebap.Data.BuildingsAndRestaurants;
+import com.jinoolee.cuebap.Helper.MyDebug;
 import com.jinoolee.cuebap.Helper.Utils;
 import com.jinoolee.cuebap.R;
 import com.jinoolee.cuebap.Data.RC;
@@ -444,7 +445,9 @@ public class MainPageActivity extends BaseActivity
 
         if(id == changeLanguageBtn.getId()){
 
-            Log.d(TAG, "Current locale language: " + this.getResources().getConfiguration().locale.getLanguage());
+            if(MyDebug.LOG){
+                Log.d(TAG, "Current locale language: " + this.getResources().getConfiguration().locale.getLanguage());
+            }
 
             if(langPref.getString("currentLanguage", "ko").equals("en")){
 

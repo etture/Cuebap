@@ -44,6 +44,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.jinoolee.cuebap.BaseActivity;
 import com.jinoolee.cuebap.Data.RC;
+import com.jinoolee.cuebap.Helper.MyDebug;
 import com.jinoolee.cuebap.Helper.Utils;
 import com.jinoolee.cuebap.MainPage.MainPageActivity;
 import com.jinoolee.cuebap.R;
@@ -88,7 +89,10 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
-                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+                if(MyDebug.LOG){
+                    Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+                }
+
             }
         } catch (PackageManager.NameNotFoundException e) {
 
@@ -169,13 +173,19 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
                         if(task.isSuccessful()){
 
-                            Log.d(TAG, "signInWithEmailAndPassword: success");
+                            if(MyDebug.LOG){
+                                Log.d(TAG, "signInWithEmailAndPassword: success");
+                            }
+
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user, false);
 
                         }else{
 
-                            Log.w(TAG, "signInWithEmailAndPassword: failure", task.getException());
+                            if(MyDebug.LOG){
+                                Log.w(TAG, "signInWithEmailAndPassword: failure", task.getException());
+                            }
+
                             updateUI(null, false);
 
                         }
@@ -183,7 +193,11 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
                         if(!task.isSuccessful()){
 
                             showSignInFailedSnackbar(R.id.rootView);
-                            Log.d(TAG, "Sign in failed with email");
+
+                            if(MyDebug.LOG){
+                                Log.d(TAG, "Sign in failed with email");
+                            }
+
 
                         }
 
@@ -221,7 +235,10 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
         Intent googleSignInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(googleSignInIntent, RC.GOOGLE_SIGN_IN);
-        Log.d(TAG, "googleSignIn() started");
+
+        if(MyDebug.LOG){
+            Log.d(TAG, "googleSignIn() started");
+        }
 
     }
 
@@ -234,13 +251,22 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
 
             firebaseAuthWithGoogle(account);
-            Log.d(TAG, "handleGoogleSignInResult() executed");
+            if(MyDebug.LOG){
+                Log.d(TAG, "handleGoogleSignInResult() executed");
+            }
 
         }catch(ApiException e){
 
-            Log.w(TAG, "googleSignIn() result: failed code = " + e.getStatusCode());
+            if(MyDebug.LOG){
+                Log.w(TAG, "googleSignIn() result: failed code = " + e.getStatusCode());
+            }
+
             showSignInFailedSnackbar(R.id.rootView);
-            Log.d(TAG, "Sign in failed with Google");
+
+            if(MyDebug.LOG){
+                Log.d(TAG, "Sign in failed with Google");
+            }
+
             updateUI(null, false);
 
         }
@@ -249,7 +275,9 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account){
 
-        Log.d(TAG, "firebaseAuthWithGoogle(): " + account.getId());
+        if(MyDebug.LOG){
+            Log.d(TAG, "firebaseAuthWithGoogle(): " + account.getId());
+        }
 
         showProgressDialog();
 
@@ -262,7 +290,10 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
                         if(task.isSuccessful()){
 
-                            Log.d(TAG, "signInWithCredential(Google): success");
+                            if(MyDebug.LOG){
+                                Log.d(TAG, "signInWithCredential(Google): success");
+                            }
+
                             FirebaseUser user = mAuth.getCurrentUser();
 
                             boolean isNew = task.getResult().getAdditionalUserInfo().isNewUser();
@@ -271,7 +302,9 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
                         }else{
 
-                            Log.w(TAG, "signInWithCredential(Google): failure", task.getException());
+                            if(MyDebug.LOG){
+                                Log.w(TAG, "signInWithCredential(Google): failure", task.getException());
+                            }
 
                             if(task.getException() instanceof FirebaseAuthUserCollisionException){
                                 showSnackbar(R.id.rootView, getString(R.string.account_already_exists));
@@ -279,7 +312,10 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
                                 showSignInFailedSnackbar(R.id.rootView);
                             }
 
-                            Log.d(TAG, "Sign in failed with Google");
+                            if(MyDebug.LOG){
+                                Log.d(TAG, "Sign in failed with Google");
+                            }
+
                             updateUI(null, false);
 
                         }
@@ -293,7 +329,9 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
     private void fbSignIn(){
 
-        Log.d(TAG, "fbSignIn() started");
+        if (MyDebug.LOG) {
+            Log.d(TAG, "fbSignIn() started");
+        }
 
         //Facebook sign-in configurations
         mCallbackManager = CallbackManager.Factory.create();
@@ -302,18 +340,25 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         mLoginManager.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d(TAG, "Facebook sign-in: onSuccess(): " + loginResult);
+                if(MyDebug.LOG){
+                    Log.d(TAG, "Facebook sign-in: onSuccess(): " + loginResult);
+                }
+
                 handleFacebookAccessToken(loginResult.getAccessToken());
             }
 
             @Override
             public void onCancel() {
-                Log.d(TAG, "Facebook sign-in: onCancel()");
+                if(MyDebug.LOG){
+                    Log.d(TAG, "Facebook sign-in: onCancel()");
+                }
             }
 
             @Override
             public void onError(FacebookException error) {
-                Log.d(TAG, "Facebook sign-in: onError()");
+                if(MyDebug.LOG){
+                    Log.d(TAG, "Facebook sign-in: onError()");
+                }
             }
         });
 
@@ -321,7 +366,10 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
     private void handleFacebookAccessToken(AccessToken token){
 
-        Log.d(TAG, "handleFacebookAccessToken(): " + token);
+        if(MyDebug.LOG){
+            Log.d(TAG, "handleFacebookAccessToken(): " + token);
+        }
+
 
         showProgressDialog();
 
@@ -334,7 +382,10 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
                         if(task.isSuccessful()){
 
-                            Log.d(TAG, "signInWithCredential(Facebook): success");
+                            if(MyDebug.LOG){
+                                Log.d(TAG, "signInWithCredential(Facebook): success");
+                            }
+
                             FirebaseUser user = mAuth.getCurrentUser();
 
                             boolean isNew = task.getResult().getAdditionalUserInfo().isNewUser();
@@ -343,7 +394,9 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
                         }else{
 
-                            Log.w(TAG, "signInWithCredential(Facebook): failure", task.getException());
+                            if(MyDebug.LOG){
+                                Log.w(TAG, "signInWithCredential(Facebook): failure", task.getException());
+                            }
 
                             if(task.getException() instanceof FirebaseAuthUserCollisionException){
                                 showSnackbar(R.id.rootView, getString(R.string.account_already_exists));
@@ -351,7 +404,10 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
                                 showSignInFailedSnackbar(R.id.rootView);
                             }
 
-                            Log.d(TAG, "Sign in failed with Facebook");
+                            if(MyDebug.LOG){
+                                Log.d(TAG, "Sign in failed with Facebook");
+                            }
+
                             updateUI(null, false);
 
                         }
@@ -409,7 +465,9 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleGoogleSignInResult(task);
-            Log.d(TAG, "handleGoogleSignInResult() called");
+            if(MyDebug.LOG){
+                Log.d(TAG, "handleGoogleSignInResult() called");
+            }
 
         }else{
 
@@ -439,7 +497,10 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
         }else if(id == fbSignInBtn.getId()){
 
-            Log.d(TAG, "fbSignInBtn clicked");
+            if(MyDebug.LOG){
+                Log.d(TAG, "fbSignInBtn clicked");
+            }
+
             fbSignIn();
 
         }

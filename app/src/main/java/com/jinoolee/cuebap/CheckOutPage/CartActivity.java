@@ -34,6 +34,7 @@ import android.widget.TimePicker;
 import com.jinoolee.cuebap.BaseActivity;
 import com.jinoolee.cuebap.Data.CartSingleton;
 import com.jinoolee.cuebap.Data.CurrentOrder;
+import com.jinoolee.cuebap.Helper.MyDebug;
 import com.jinoolee.cuebap.Helper.RecyclerViewAdapter;
 import com.jinoolee.cuebap.Helper.Utils;
 import com.jinoolee.cuebap.R;
@@ -468,12 +469,17 @@ public class CartActivity extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                Log.d(TAG, "Yes button clicked");
+                if(MyDebug.LOG){
+                    Log.d(TAG, "Yes button clicked");
+                }
+
 
                 cart.setCurrentRestaurant(cart.getNullRestaurantItem());
                 cart.empty();
 
-                Log.d(TAG, "Menu items in cart: " + cart.toString());
+                if(MyDebug.LOG){
+                    Log.d(TAG, "Menu items in cart: " + cart.toString());
+                }
 
                 updateUI();
 
@@ -483,7 +489,11 @@ public class CartActivity extends BaseActivity {
         builder.setNegativeButton(Utils.getLangString(this, curLang, R.string.no), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Log.d(TAG, "No button clicked");
+
+                if(MyDebug.LOG){
+                    Log.d(TAG, "No button clicked");
+                }
+
             }
         });
 

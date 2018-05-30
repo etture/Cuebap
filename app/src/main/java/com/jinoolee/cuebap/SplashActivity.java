@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.jinoolee.cuebap.Helper.MyDebug;
 import com.jinoolee.cuebap.SignInCreateAccount.SignInActivity;
 
 public class SplashActivity extends BaseActivity {
@@ -36,7 +37,9 @@ public class SplashActivity extends BaseActivity {
         try{
             Thread.sleep(200);
         }catch(InterruptedException e){
-            Log.e(TAG, "SplashActivity: fail", e);
+            if(MyDebug.LOG){
+                Log.e(TAG, "SplashActivity: fail", e);
+            }
         }
 
         startActivity(intent);
