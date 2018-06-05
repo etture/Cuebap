@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jinoolee.cuebap.BaseActivity;
+import com.jinoolee.cuebap.Data.CurrentUser;
 import com.jinoolee.cuebap.Helper.MyDebug;
 import com.jinoolee.cuebap.Helper.Utils;
 import com.jinoolee.cuebap.R;
@@ -30,7 +31,7 @@ public class MyPageActivity extends BaseActivity implements View.OnClickListener
 
     private static final String TAG = "MyPageActivity";
 
-    private Button signOutBtn;
+    private TextView signOutBtn;
     private FoldingCell foldingCell;
 
     private FirebaseAuth mAuth;
@@ -41,16 +42,23 @@ public class MyPageActivity extends BaseActivity implements View.OnClickListener
     private SharedPreferences langPref;
     private String curLang;
 
+    private CurrentUser currentUser;
+
+    private TextView campusName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
 
+        currentUser = CurrentUser.getCurrentUser();
+        campusName = findViewById(R.id.my_page_campus_name);
+
         //Current language
         langPref = getSharedPreferences("language", MODE_PRIVATE);
         curLang = langPref.getString("currentLanguage", "en");
 
-        Toolbar toolbar = this.findViewById(R.id.toolbar);
+        Toolbar toolbar = this.findViewById(R.id.my_page_toolbar);
         setSupportActionBar(toolbar);
 
         //ActionBar set text to center, with back button
@@ -149,8 +157,26 @@ public class MyPageActivity extends BaseActivity implements View.OnClickListener
     @Override
     protected void layoutElementStringSetup(){
 
-        Button sign_out_btn = findViewById(R.id.sign_out_btn);
+        TextView sign_out_btn = findViewById(R.id.sign_out_btn);
         sign_out_btn.setText(Utils.getLangString(this, curLang, R.string.sign_out));
+        campusName.setText(currentUser.getSchool() + " " + currentUser.getCampus());
+
+        TextView pointsText, couponsText, eventText;
+        TextView pointsDisplay, couponsDisplay, eventDisplay;
+
+        pointsText = findViewById(R.id.my_page_points_text);
+        couponsText = findViewById(R.id.my_page_coupons_text);
+        eventText = findViewById(R.id.my_page_event_text);
+        pointsDisplay = findViewById(R.id.my_page_points_display);
+        couponsDisplay = findViewById(R.id.my_page_coupons_display);
+        eventDisplay = findViewById(R.id.my_page_event_display);
+
+        pointsText.setText(Utils.getLangString(this, curLang, R.string.point));
+        couponsText.setText(Utils.getLangString(this, curLang, R.string.coupon));
+        eventText.setText(Utils.getLangString(this, curLang, R.string.event));
+        pointsDisplay.setText(Utils.getLangString(this, curLang, R.string.points_display, 0));
+        couponsDisplay.setText(Utils.getLangString(this, curLang, R.string.coupons_display, 0));
+        eventDisplay.setText(Utils.getLangString(this, curLang, R.string.get_coupons));
 
     }
 }

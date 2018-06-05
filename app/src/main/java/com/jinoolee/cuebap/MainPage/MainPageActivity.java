@@ -32,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jinoolee.cuebap.CheckOutPage.CartActivity;
 import com.jinoolee.cuebap.CheckOutPage.CheckOutActivity;
+import com.jinoolee.cuebap.Data.CurrentUser;
 import com.jinoolee.cuebap.Helper.AnimatedExpandableListView;
 import com.jinoolee.cuebap.BaseActivity;
 import com.jinoolee.cuebap.Data.BuildingsAndRestaurants;
@@ -335,6 +336,9 @@ public class MainPageActivity extends BaseActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
+
+                CurrentUser currentUser = CurrentUser.getCurrentUser();
+                currentUser.setCurrentUser(user);
 
                 String name = user.getName();
                 String school = user.getSchool();

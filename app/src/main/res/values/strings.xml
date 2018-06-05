@@ -153,4 +153,6 @@
     <string name="price">Price</string>
     <string name="subtotal">Subtotal</string>
     <string name="fold_detailed_receipt">Fold Detailed Receipt</string>
+    <string name="event">Event</string>
+    <string name="get_coupons">Get Coupons</string>
 </resources>
