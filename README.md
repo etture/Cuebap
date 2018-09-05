@@ -4,11 +4,7 @@
 
 [Play Store Link](https://play.google.com/store/apps/details?id=com.jinoolee.cuebap)
 
-<img src="./public/images/login_screenshot.PNG" width="200">
-<img src="./public/images/home_screenshot.PNG" width="200">
-<img src="./public/images/store_screenshot.PNG" width="200">
-<img src="./public/images/cart_screenshot.PNG" width="200">
-<img src="./public/images/receipt_screenshot.PNG" width="200">
+<img src="./public/images/login_screenshot.PNG" width="200"><img src="./public/images/home_screenshot.PNG" width="200"><img src="./public/images/store_screenshot.PNG" width="200"><img src="./public/images/cart_screenshot.PNG" width="200"><img src="./public/images/receipt_screenshot.PNG" width="200">
 
 Cuebap is an on-demand meal ordering and delivery platform that aims to optimize the eating experiences of college students and faculty, simultaneously allowing restaurants to see greater efficiency and enjoy more sales. The idea rose from accumulated inefficient use of time students have been experiencing due to long queues, which leads to 1 out of 3 students skipping meals. We aim to create value for college campuses by offering pre-order system through providing real time data that people are seeking all the time, to have daily impact on their lives.
 
