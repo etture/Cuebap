@@ -3,6 +3,7 @@
 <img src="./public/images/logo.PNG" width="200">
 
 [Play Store Link](https://play.google.com/store/apps/details?id=com.jinoolee.cuebap)
+
 [APK Download Link](https://jinoolee-aws-s3.s3.ap-northeast-2.amazonaws.com/cuebap-release-1.0.1.apk)
 
 <img src="./public/images/login_screenshot.PNG" width="250">  <img src="./public/images/home_screenshot.PNG" width="250">  <img src="./public/images/store_screenshot.PNG" width="250">
